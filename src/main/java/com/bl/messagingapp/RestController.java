@@ -3,6 +3,7 @@ package com.bl.messagingapp;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @org.springframework.web.bind.annotation.RestController
 @RequestMapping("app")
@@ -13,8 +14,8 @@ public class RestController {
         return "hello";
     }
 
-    @GetMapping("/hello/{name}")
-    public String sayHelloGet(@PathVariable String name){
+    @GetMapping("/hello")
+    public String sayHelloGet(@RequestParam String name){
         return "hello " + name;
     }
 }
