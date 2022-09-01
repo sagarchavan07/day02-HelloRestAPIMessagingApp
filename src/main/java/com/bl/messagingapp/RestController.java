@@ -18,4 +18,9 @@ public class RestController {
     public String sayHelloGet(@RequestParam String name){
         return "hello " + name;
     }
+
+    @GetMapping("/hello/{name}")
+    public String sayHelloGetPath(@PathVariable String name){
+        return "hello " + name;
+    }
 }
