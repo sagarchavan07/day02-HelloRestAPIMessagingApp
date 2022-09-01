@@ -20,4 +20,9 @@ public class RestController {
     public String sayHelloPost(@RequestBody User user){
         return "hello " + user.getFirstName() + " " + user.getLastName();
     }
+
+    @PutMapping("/helloPut/{firstName}")
+    public String sayHelloPost(@PathVariable String firstName , @RequestParam String lastName){
+        return "hello " + firstName + " " + lastName + " from BirdgeLabz!";
+    }
 }
