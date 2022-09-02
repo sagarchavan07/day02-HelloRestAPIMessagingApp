@@ -1,10 +1,16 @@
-package com.bl.messagingapp;
+package com.bl.messagingapp.Controller;
 
+import com.bl.messagingapp.DTO.UserDTO;
+import com.bl.messagingapp.Entity.User;
+import com.bl.messagingapp.Service.MessagingService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @org.springframework.web.bind.annotation.RestController
 @RequestMapping("app")
 public class RestController {
+    @Autowired
+    MessagingService messagingService;
 
     @RequestMapping("/hello")
     public String sayHello(){
@@ -16,9 +22,10 @@ public class RestController {
         return "hello " + name;
     }
 
-    @PostMapping("/hello")
-    public String sayHelloPost(@RequestBody User user){
-        return "hello " + user.getFirstName() + " " + user.getLastName();
+    @PostMapping("/hellopost")
+    public String sayHelloPost(@RequestBody UserDTO userDTO){
+        User user = new User(userDTO);
+        return messagingService.getMessage(user);
     }
 
     @PutMapping("/helloPut/{firstName}")
